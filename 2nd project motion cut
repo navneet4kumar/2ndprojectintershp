@@ -1,0 +1,49 @@
+import time
+
+def print_delayed(text, delay=1):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+    print()
+
+def get_choice(options):
+    while True:
+        choice = input("Enter your choice: ").strip().lower()
+        if choice in options:
+            return choice
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+def start_game():
+    print_delayed("Welcome to the Text Adventure Game!")
+    print_delayed("You are in a dark and spooky forest.")
+    
+    while True:
+        print("\nWhat do you want to do?")
+        print("1. Go deeper into the forest")
+        print("2. Stay where you are")
+        
+        choice = get_choice(['1', '2'])
+        
+        if choice == '1':
+            print_delayed("You venture deeper into the forest.")
+            print_delayed("You come across a river. What do you want to do?")
+            print("1. Cross the river")
+            print("2. Go back to the forest entrance")
+            
+            choice = get_choice(['1', '2'])
+            
+            if choice == '1':
+                print_delayed("You try to cross the river, but the current is too strong, and you are swept away.")
+                print_delayed("Game Over.")
+                break
+            else:
+                print_delayed("You go back to the forest entrance.")
+        else:
+            print_delayed("You decide to stay where you are.")
+            print_delayed("Suddenly, a group of friendly forest creatures appear and guide you out of the forest.")
+            print_delayed("Congratulations! You have successfully completed the game.")
+            break
+
+if __name__ == "__main__":
+    start_game()
